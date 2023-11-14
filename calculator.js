@@ -18,6 +18,7 @@ let num1;
 let num2;
 let operator;
 
+/* Takes two numbers and operator and calls appropriate function */ 
 function operate(operator,num1,num2) {
     if(operator === "+"){
         return add(num1,num2);
