@@ -1,7 +1,27 @@
+*{
+    background-color: rgb(255, 196, 0);
+}
+
 button{
-    width: 200px;
-    height: 200px;
-    background-color: #4c4d4c
+    width: 100px;
+    height: 100px;
+    background-color: #000000;
+    border-color: #000000;
+    border-width: 3px;
+    color: white;
+    margin: 3px;
+    border-radius: 10px;
+    opacity: 80%;
+    font-size: 22px;
+}
+
+#zero{
+    /* border margins both sides 3px + 3px = 6px */
+    width: 206px;
+} 
+
+#clear{
+    width: 418px;
 }
 
 .grid-row{
@@ -13,5 +33,22 @@ button{
     
 }
 
+.number-box{
+    border: 5px solid black;
+    border-radius: 10px;
+    background-color: white;
+    width: 396px;
+    padding: 0px;
+    padding-left: 20px;
+    font-size: 40px;
+    text-align: right;
+}
+
+#text{
+    background-color: white;
+    margin: 10px;
+    text-align: right;
+    width: 375px;
+}
 
 

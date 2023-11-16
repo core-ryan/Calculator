@@ -7,25 +7,37 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div class="grid-container">
+    <div class="number-box">
+        <p id="text">123456789</p>
+    </div>
+    <div class="grid-container" id="wrapper">
         <div class="grid-row">
             <button>7</button>
             <button>8</button>
             <button>9</button>
+            <button>/</button>
         </div>
         <div class="grid-row">
             <button>4</button>
             <button>5</button>
             <button>6</button>
+            <button>*</button>
         </div>
         <div class="grid-row">
             <button>1</button>
             <button>2</button>
             <button>3</button>
+            <button>-</button>
         </div>
         <div class="grid-row">
-            <button>0</button>
+            <button id="zero">0</button>
+            <button>=</button>
+            <button>+</button>
+        </div>
+        <div class="grid-row">
+            <button id="clear">Clear</button>
         </div>
     </div>
+    <script src="calculator.js"></script>
 </body>
 </html>
