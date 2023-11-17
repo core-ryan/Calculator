@@ -37,6 +37,14 @@ function operate(operator,num1,num2) {
     }
 }
 
+// Function to check if the input is an operator
+function isOperator(a){
+    if(a == "+" || a == "-" || a == "*" || a =="/"){
+        return true;
+    }
+    return false;
+}
+
 // Retrieves the text element that acts as a display for the calculator
 const calcScreenText = document.getElementById("text");
 // Retrieves the grid-container that holds all button buttons
@@ -47,6 +55,9 @@ let operatorSelected = false;
 
 // Indicates if evaluate() was ran, resets calculator screen value upon click after eval
 let evalTriggered = false;
+
+// Stores the previous result after calculation
+let result = 0;
 
 // Adding event listener to react to when the button interface is clicked
 buttonContainer.addEventListener("click", (event) => {
@@ -65,10 +76,7 @@ buttonContainer.addEventListener("click", (event) => {
     }
 
     // Checks if operator button has been pressed
-    if(event.target.innerHTML == "+" ||
-    event.target.innerHTML == "-" ||
-    event.target.innerHTML == "*" ||
-    event.target.innerHTML == "/"){
+    if(isOperator(event.target.innerHTML)){
         if(operatorSelected){
             // Exit function if operator has already been used
             return;
@@ -108,8 +116,21 @@ function evaluate(rawString){
     // Ugly regex to take the operator from the rawstring and allow split() to keep the separator
     let functionParts = rawString.split(/(?=[+\-\*\/])|(?<=[+\-\*\/])/g);
     
+    // Checks if first character in raw string is an operator
+    // ** Allows user to operate based on result they just calculated **
+    if(isOperator(functionParts[0])){
+        // If operator is first, operate based on previous result
+        calcScreenText.innerHTML = operate(functionParts[0],result,Number(functionParts[1]));
+        result = operate(functionParts[0],result,Number(functionParts[1]));
+    
+        evalTriggered = true;
+        // Return to avoid second call with missing array values
+        return;
+    }
+
     // call operate with results of the split() to get result and update text in calculator screen
     calcScreenText.innerHTML = operate(functionParts[1],Number(functionParts[0]),Number(functionParts[2]));
-
+    result = operate(functionParts[1],Number(functionParts[0]),Number(functionParts[2]));
+    
     evalTriggered = true;
 }
